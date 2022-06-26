@@ -9,7 +9,8 @@ const DemoOutput = (props) => {
   // myparagraph is a child component of Demo output. Demo output is a child component of App. since app is re-evalauted,
   // demo ouput will also re- evaluate, and which will then re-evaluate my paragraph
   // this continues down the component tree -
-  //
+  // this costs performance, so how to prevent unnecessary re-evaluations? - use React.memo() for functional components
+  // compares previous props value with new value, if the value changes, do re-evaluation, else dont
 };
 
-export default DemoOutput;
+export default React.memo(DemoOutput);
