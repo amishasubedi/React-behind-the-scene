@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 
 import "./App.css";
 import Button from "./components/UI/Button/Button";
@@ -12,11 +12,12 @@ function App() {
 
   console.log("App Running"); // since app executes every time state changes, App running will be output on console everytime you click toggle
 
-  const toggleParagraphHandler = () => {
+  const toggleParagraphHandler = useCallback(() => {
+    // reuse the same function object - useCallback
     // opposite of show paragraph, but instead of passing it directly,
     // use a function, pass it as a parameter then reverse it
     setShowParagraph((prevShowParagraph) => !prevShowParagraph); // reversing true to false, false to true
-  };
+  }, []); // empty array of dependency because there are none
 
   return (
     <div className="app">
